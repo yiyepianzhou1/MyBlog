@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 function Home() {
   const [count, setCount] = useState(0)
   return (
-    <div>
+    <div className='page_home'>
     </div>
   )
 }

@@ -1,13 +1,11 @@
-import { useState } from 'react'
-
+import { useState } from 'react';
+import { Button } from '@mui/material';
 function Home() {
-    const [count, setCount] = useState(0)
-    return (
-        <div>
-            <button onClick={() => setCount((v) => v+=1)}>count</button>
-            <div>{ count }</div>
-        </div>
-    )
+  const [count, setCount] = useState(0)
+  return (
+    <div>
+    </div>
+  )
 }
 
 export default Home;

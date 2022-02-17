@@ -1,3 +1,11 @@
 .default_layout {
-    background-color: #ccc;
+    .default_side_main {
+      display: flex;
+    }
+    .default_content {
+      padding: 15px 20px;
+    }
+    .drawer_content {
+      transition: width 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, IconButton, Divider, List, ListItem } from '@mui/material'
+import { Drawer, IconButton, Divider, List, ListItem, Avatar, colors } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+const { deepOrange, deepPurple } = colors;
 const drawerWidth = 240;
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -42,6 +42,9 @@ export default function Sidebar(props: SidebarProps) {
         open={ open }
       >
         <DrawerHeader>
+          {/* <ListItemText primary="一叶扁舟" /> */}
+          {/* <Avatar /> */}
+          <Avatar sx={{ bgcolor: deepOrange[500] }}>FU</Avatar>
           <IconButton onClick={() => changeOpen(false)}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>

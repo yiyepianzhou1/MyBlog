@@ -1,8 +1,12 @@
 import React, { useState } from "react"
 import { Card, Typography, Grid } from '@mui/material';
 
+interface propsFace {
+  Item?: Object
+}
 
-export default function ListItem(props = {}) {
+export default function ListItem(props: propsFace) {
+  const { Item = {} } = props;
   return (
     <Card sx={
       {

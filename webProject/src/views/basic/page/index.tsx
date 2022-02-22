@@ -14,8 +14,8 @@ export default function Page() {
       <List>
         {
           dataList.map(v => 
-            <ListItem key={v.name} onClick={clickHandel} sx={{ cursor: 'pointer' }}>
-              <ContentItem />
+            <ListItem key={ v.name } onClick={clickHandel} sx={{ cursor: 'pointer' }}>
+              <ContentItem Item={ v } />
             </ListItem> 
             )
         }

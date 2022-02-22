@@ -1,24 +1,21 @@
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 import './index.scss';
-import { ThemeProvider, createTheme, ThemeOptions } from '@mui/material/styles';
-
-const params: ThemeOptions = {
-  palette: {
-    mode: 'light'
-  },
-};
-const theme = createTheme({ ...params });
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 function DefaultLayout() {
-  // 侧边栏控制
+  const [mode, setMode] = useState<'dark' | 'light'>('light')
   const [open, setOpen] = useState(true);
+
+  const theme = createTheme({
+    palette: { mode },
+  });
   return (
     <div className='default_layout'>
       <ThemeProvider theme={theme}>
-        <Header changeOpen={setOpen} open={open} />
+        <Header changeOpen={setOpen} open={open} setMode={setMode} mode={mode} />
         <div className='default_side_main'>
           <Sidebar changeOpen={setOpen} open={open} />
           <div className='default_content'>

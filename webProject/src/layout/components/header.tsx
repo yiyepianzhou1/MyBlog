@@ -5,6 +5,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
@@ -25,7 +27,6 @@ const Search = styled('div')(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => {
-  console.log('SearchIconWrapper', theme)
   return {
     padding: theme.spacing(0, 2),
     height: '100%',
@@ -52,12 +53,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 interface HeaderProps {
-  changeOpen?:Function
-  open?:boolean
+  changeOpen?: Function
+  open?: boolean
+  mode?: string
+  setMode?: Function
 };
-
+function setModeFun(mode = '') {
+  if (mode === 'light') {}
+  const str = mode === 'light' ? 'dark' : 'light'
+  return str;
+}
 export default function Header(props: HeaderProps) {
-  const { changeOpen = () => {}, open = false } = props
+  const { changeOpen = () => {}, open = false, mode = '', setMode = () => {} } = props
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -188,6 +195,13 @@ export default function Header(props: HeaderProps) {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton size="large" aria-label="show 4 new mails" onClick={
+              () => setMode(setModeFun(mode))
+            } color="inherit">
+              {
+                mode === 'light' ? <BedtimeIcon /> : <Brightness7Icon />
+              }
+            </IconButton>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />

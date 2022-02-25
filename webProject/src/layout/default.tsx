@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import React, { useState, useReducer } from 'react';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
+import { Container } from '@mui/material';
 import './index.scss';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 

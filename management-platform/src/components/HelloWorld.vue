@@ -38,7 +38,11 @@ import { Options, Vue } from 'vue-class-component';
 
 @Options({
   props: {
-    msg: String
+    msg: String,
+    type: {
+      type: Object,
+      default: () => ({})
+    },
   }
 })
 export default class HelloWorld extends Vue {

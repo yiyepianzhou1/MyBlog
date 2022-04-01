@@ -8,7 +8,7 @@ interface propInfo {
   content: string
   type: string
 }
-function Message(props: propInfo) {
+function Message(props: propInfo): ReactElement<any> {
   const { content = '', type } = props;
   const [open, setOpen] = useState(true);
   setTimeout(() => { setOpen(false) }, 2000)
@@ -19,15 +19,15 @@ function Message(props: propInfo) {
   )
 }
 
-interface jsxdom1 extends ReactElement {
-  // length, pop, push, concat
+interface jsxdom1 extends ReactElement<[]> {
+
 }
 
 const message = {
   dom: HTMLDivElement,
   info(str = '') {
     this.dom = document.createElement('div') as any;
-    const jsxdom: jsxdom1 = (<Message content={str} type={'info'}></Message>);
+    const jsxdom = (<Message content={str} type={'info'}></Message>);
     ReactDOM.render(jsxdom, this.dom);
   },
   success() { },

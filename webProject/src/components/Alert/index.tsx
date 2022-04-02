@@ -1,10 +1,11 @@
-import { Snackbar, Alert, AlertProps, AlertColor, SnackbarOrigin } from '@mui/material';
+import { Snackbar, Alert, AlertColor, SnackbarOrigin } from '@mui/material';
 import { ReactElement, useState } from 'react';
 import ReactDOM from "react-dom";
 
 interface propInfo {
   content: string
   type?: AlertColor
+  id?: string
 }
 function Message(props: propInfo): ReactElement<any> {
   const { content = '', type } = props;
@@ -21,24 +22,23 @@ function Message(props: propInfo): ReactElement<any> {
 }
 
 const message = {
-  dom: null,
   info(str = '') {
-    this.dom = document.createElement('div') as any;
-    const jsxdom = (<Message content={str} type={'info'}></Message>) as any;
-    ReactDOM.render(jsxdom, this.dom);
-    document.body.appendChild(this.dom as any);
+    const dom = document.createElement('div');
+    const jsxdom = (<Message content={str} type={'info'}></Message>);
+    ReactDOM.render(jsxdom, dom);
+    document.body.appendChild(dom);
   },
   success(str = '') {
-    this.dom = document.createElement('div') as any;
-    const jsxdom = (<Message content={str} type={'success'}></Message>) as any;
-    ReactDOM.render(jsxdom, this.dom);
-    document.body.appendChild(this.dom as any);
+    const dom = document.createElement('div');
+    const jsxdom = (<Message content={str} type={'success'}></Message>);
+    ReactDOM.render(jsxdom, dom);
+    document.body.appendChild(dom);
   },
   error(str: string) {
-    this.dom = document.createElement('div') as any;
-    const jsxdom = (<Message content={str} type={'error'}></Message>) as any;
-    ReactDOM.render(jsxdom, this.dom);
-    document.body.appendChild(this.dom as any);
+    const dom = document.createElement('div');
+    const jsxdom = (<Message content={str} type={'error'}></Message>);
+    ReactDOM.render(jsxdom, dom);
+    document.body.appendChild(dom);
   }
 };
 

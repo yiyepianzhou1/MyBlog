@@ -1,37 +1,45 @@
-import { Snackbar, Alert } from '@mui/material';
+import { Snackbar, Alert, AlertProps, AlertColor, SnackbarOrigin } from '@mui/material';
 import { ReactElement, useState } from 'react';
 import ReactDOM from "react-dom";
 
-// 定义message组件
-// 静态函数调用，success、error、info
 interface propInfo {
   content: string
-  type: string
+  type?: AlertColor
 }
 function Message(props: propInfo): ReactElement<any> {
   const { content = '', type } = props;
   const [open, setOpen] = useState(true);
-  setTimeout(() => { setOpen(false) }, 2000)
+  const anchorOrigin: SnackbarOrigin = {
+    vertical: 'top',
+    horizontal: 'center'
+  };
   return (
-    <Snackbar open={open}>
-      <Alert security={ type }>{ content }</Alert>
+    <Snackbar open={open} autoHideDuration={ 2000 } onClose={() => setOpen(false)} anchorOrigin={anchorOrigin}>
+      <Alert severity={ type }>{ content }</Alert>
     </Snackbar>
   )
 }
 
-interface jsxdom1 extends ReactElement<[]> {
-
-}
-
 const message = {
-  dom: HTMLDivElement,
+  dom: null,
   info(str = '') {
     this.dom = document.createElement('div') as any;
-    const jsxdom = (<Message content={str} type={'info'}></Message>);
+    const jsxdom = (<Message content={str} type={'info'}></Message>) as any;
     ReactDOM.render(jsxdom, this.dom);
+    document.body.appendChild(this.dom as any);
   },
-  success() { },
-  error() { }
+  success(str = '') {
+    this.dom = document.createElement('div') as any;
+    const jsxdom = (<Message content={str} type={'success'}></Message>) as any;
+    ReactDOM.render(jsxdom, this.dom);
+    document.body.appendChild(this.dom as any);
+  },
+  error(str: string) {
+    this.dom = document.createElement('div') as any;
+    const jsxdom = (<Message content={str} type={'error'}></Message>) as any;
+    ReactDOM.render(jsxdom, this.dom);
+    document.body.appendChild(this.dom as any);
+  }
 };
 
 export default message

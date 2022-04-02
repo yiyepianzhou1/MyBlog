@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Button } from '@mui/material';
+import { Toast } from '@/utils/index';
 
+Toast.info('彩色')
 function Home() {
   const [count, setCount] = useState(0)
   return (

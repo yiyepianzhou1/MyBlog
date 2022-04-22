@@ -15,15 +15,15 @@ export default defineConfig({
             resolves: [ElementPlusResolver()]
         })
     ],
-	// root: './',
-    publicPath: './',
+	root: './',
 	publicDir: 'public',
-	base: '/',
+	base: './',
 	mode: 'development',
 	overlay: false,
 	optimizeDeps: {
 		include: []
 	},
+	outDir: 'dist',
 	resolve: {
 		alias: {
 		'@': resolve('src'),
@@ -40,16 +40,13 @@ export default defineConfig({
 	server: {
 		host: '0.0.0.0',
 		open: true,
-		hmr: {
-			overlay: false
-		},
 		port: '8082',
-		proxy: {
-			"/api": {
-				changeOrigin: true,
-				target: 'http://actcmsapipre.test.betawm.com/',
-				rewrite: (path) => path.replace(/^\/api/, '/')
-			},
-		}
+		// proxy: {
+		// 	"/api": {
+		// 		changeOrigin: true,
+		// 		target: 'http://actcmsapipre.test.betawm.com/',
+		// 		rewrite: (path) => path.replace(/^\/api/, '/')
+		// 	},
+		// }
 	},
 })
